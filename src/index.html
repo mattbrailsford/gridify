@@ -9,6 +9,10 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.0/dist/full.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
     <style>
+        .h-screen {
+            height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+            height: calc(var(--vh, 1vh) * 100);
+        }
         .bg-grid {
             background-image: radial-gradient(hsla(var(--bc)/.2) 0.5px,hsla(var(--b2)/1) 0.5px);
             background-size: 5px 5px;
@@ -86,6 +90,14 @@
             }))
 
         })
+
+        let resizeHandler = () => {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+        window.addEventListener('resize', resizeHandler);
+        resizeHandler();
+        
     </script>
 </body>
 </html>
